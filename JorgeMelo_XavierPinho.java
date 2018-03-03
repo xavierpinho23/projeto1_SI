@@ -181,31 +181,70 @@ public static void main(String[] args)
 			{
 				k1--;
 			}
-			
 			if (k1==bb1 && l1==BB1) {
-				table1[bb1][BB1]=" ";
-				table1[bb1+(k1-k)][BB1+(l1-l)]="B";
-				bb1=bb1+(k1-k);
-				BB1=BB1+(l1-l);
+				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*")) { //Se a futura posição de B estiver ocupada por "*", o sistema não evolui
+					System.out.println("Movimento não permitido.");
+					k1=k;
+					l1=l;
+				}
+				else {
+					table1[bb1][BB1]=" ";
+					table1[bb1+(k1-k)][BB1+(l1-l)]="B";
+				
+					bb1=bb1+(k1-k);
+					BB1=BB1+(l1-l);
+				}
 			}
 			if (k1==bb2 && l1==BB2) {
-				table1[bb2][BB2]=" ";
-				table1[bb2+(k1-k)][BB2+(l1-l)]="B";
-				bb2=bb2+(k1-k);
-				BB2=BB2+(l1-l);
+				if (table1[bb2+(k1-k)][BB2+(l1-l)].equals("*")) { //Se a futura posição de B estiver ocupada por "*", o sistema não evolui
+					System.out.println("Movimento não permitido.");
+					k1=k;
+					l1=l;
+				}
+				else {
+					table1[bb2][BB2]=" ";
+					table1[bb2+(k1-k)][BB2+(l1-l)]="B";
+				
+					bb2=bb2+(k1-k);
+					BB2=BB2+(l1-l);
+				}
 			}
 			if (k1==bb3 && l1==BB3) {
-				table1[bb3][BB3]=" ";
-				table1[bb3+(k1-k)][BB3+(l1-l)]="B";
-				bb3=bb3+(k1-k);
-				BB3=BB3+(l1-l);
+
+				if (table1[bb3+(k1-k)][BB3+(l1-l)].equals("*")) { //Se a futura posição de B estiver ocupada por "*", o sistema não evolui
+					System.out.println("Movimento não permitido.");
+					k1=k;
+					l1=l;
+				}
+				else {
+					table1[bb3][BB3]=" ";
+					table1[bb3+(k1-k)][BB3+(l1-l)]="B";
+				
+					bb3=bb3+(k1-k);
+					BB3=BB3+(l1-l);
+				}
 			}
 			if (k1==bb4 && l1==BB4) {
-				table1[bb4][BB4]=" ";
-				table1[bb4+(k1-k)][BB4+(l1-l)]="B";
-				bb4=bb4+(k1-k);
-				BB4=BB4+(l1-l);
+				if (table1[bb4+(k1-k)][BB4+(l1-l)].equals("*")) { //Se a futura posição de B estiver ocupada por "*", o sistema não evolui
+					System.out.println("Movimento não permitido.");
+					k1=k;
+					l1=l;
+
+				}
+				else {
+					table1[bb4][BB4]=" ";
+					table1[bb4+(k1-k)][BB4+(l1-l)]="B";
+				
+					bb4=bb4+(k1-k);
+					BB4=BB4+(l1-l);
+				}
 			}
+			if (table1[k1][l1].equals("*")) { //Se a futura posição de M estiver ocupada por "*", o sistema não evolui.
+				k1=k;
+				l1=l;
+				System.out.println("Movimento não permitido.");
+			}
+
 			
 			table1[k1][l1]="M"; //nova posição do trabalhador M
 			k=k1;
