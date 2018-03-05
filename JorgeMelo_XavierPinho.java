@@ -52,6 +52,8 @@ public static void main(String[] args)
 		int bb1=3; int bb2=3; int bb3=4; int bb4=5;
 		int BB1=9; int BB2=15; int BB3=9; int BB4=12;
 		
+		int score;
+		
 		for (int i=0;i<table1.length;i++) // i vai de 0 até 7
 			{ 
 			for (int j=0;j<table1[0].length;j++)  //j vai de 0 até 21
@@ -159,9 +161,10 @@ public static void main(String[] args)
 			}
 			System.out.println();
 		}
-		
-		while (table1[xx1][yy1].equals("X") || table1[xx2][yy2].equals("X") || table1[xx3][yy3].equals("X") || table1[xx4][yy4].equals("X")) 
+		//enquanto as posições X não tiverem todas uma caixa B o jogo não acaba
+		while (!table1[xx1][yy1].equals("B") || !table1[xx2][yy2].equals("B") || !table1[xx3][yy3].equals("B") || !table1[xx4][yy4].equals("B")) 
 		{
+			score = 0;
 			System.out.println("Prima W,A,S e D para se mover: ");
 			String tecla = scan.nextLine();
 			table1[k][l]=" ";
@@ -183,6 +186,14 @@ public static void main(String[] args)
 			if (tecla.equals("w"))
 			{
 				k1--;
+			}
+			if (tecla.equals("q"))
+			{
+				return;
+			}
+			if (tecla.equals("x"))
+			{
+				System.exit(0);
 			}
 			
 			if (k1==bb1 && l1==BB1)
@@ -267,7 +278,8 @@ public static void main(String[] args)
 				System.out.println();
 			}
 		}
-}
+		
+	}
 	else if (level == 2)
 	{
 		int k=2; int k1=k;  // k1 new line position
@@ -278,7 +290,7 @@ public static void main(String[] args)
 		
 		int bb1=2; int bb2=3; int bb3=3; 
 		int BB1=6; int BB2=6; int BB3=7;
-		
+				
 		for (int i=0;i<table2.length;i++) // i vai de 0 até 8
 			{ 
 			for (int j=0;j<table2[0].length;j++)  //j vai de 0 até 24
@@ -396,6 +408,7 @@ public static void main(String[] args)
 		}
 		System.out.println();
 	}
+		//enquanto as posições X não tiverem todas uma caixa B o jogo não acaba
 		while (!table2[xx1][yy1].equals("B") || !table2[xx2][yy2].equals("B")  || !table2[xx3][yy3].equals("B")) 
 		{
 			System.out.println("Prima W,A,S e D para se mover: ");
@@ -420,6 +433,15 @@ public static void main(String[] args)
 			if (tecla.equals("w"))
 			{
 				k1--;
+			}
+			if (tecla.equals("q"))
+			{
+				return;
+			}
+			if (tecla.equals("x"))
+			{
+				System.exit(0);
+
 			}
 			
 			if (k1==bb1 && l1==BB1)
@@ -491,6 +513,7 @@ public static void main(String[] args)
 			}
 			
 		}
+		
 	}
 	
 	else 
