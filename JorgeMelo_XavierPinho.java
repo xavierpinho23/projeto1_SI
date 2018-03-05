@@ -8,8 +8,8 @@ public static void main(String[] args)
 {
 	//SOKOBAN
 				
-//cen√°rio do n√≠vel 1
-	System.out.println("N√çVEL 1");
+//cen·rio do nÌvel 1
+	System.out.println("NÕVEL 1");
 	System.out.println("      *******");
 	System.out.println("      *     *");
 	System.out.println("      *     **********");
@@ -20,8 +20,8 @@ public static void main(String[] args)
 	System.out.println("        ********");
 
 
-//cen√°rio do n√≠vel 2
-	System.out.println("N√çVEL 2");
+//cen·rio do nÌvel 2
+	System.out.println("NÕVEL 2");
 	System.out.println("*************");
 	System.out.println("*           *");
 	System.out.println("*           *");
@@ -34,24 +34,27 @@ public static void main(String[] args)
 	System.out.println("   *************");
 	
 	Scanner scan = new Scanner(System.in);
-	System.out.println("Escolher n√≠vel: ");
+	System.out.println("Escolher nÌvel: ");
 	int level = scan.nextInt();
 	scan.nextLine();
 	
-	String[][] table1 = new String[8][22]; //matriz do nivel 1
-	String[][] table2 = new String[9][25]; //matriz do nivel 2
+	String[][] table1 = new String[8][22]; //matrix of level 1
+	String[][] table2 = new String[9][25]; //matrix of level 2
 	
 	if (level==1)
 	{
-		int k=4; int k1=k; // k1 new column position
+		int k=4; int k1=k;  // k1 new line position
 		int l=12; int l1=l; // l1 new column position
+		
 		int xx1=1; int xx2=3; int xx3=4; int xx4=6; //turned B and X positions into variables, so that we can change them.
 		int yy1=9; int yy2=18; int yy3=3; int yy4=12;
+		
 		int bb1=3; int bb2=3; int bb3=4; int bb4=5;
 		int BB1=9; int BB2=15; int BB3=9; int BB4=12;
-		for (int i=0;i<table1.length;i++) // i vai de 0 at√© 7
+		
+		for (int i=0;i<table1.length;i++) // i vai de 0 atÈ 7
 			{ 
-			for (int j=0;j<table1[0].length;j++)  //j vai de 0 at√© 21
+			for (int j=0;j<table1[0].length;j++)  //j vai de 0 atÈ 21
 			{
 				if (i==0)
 				{
@@ -141,7 +144,7 @@ public static void main(String[] args)
 						table1[i][j]=" ";
 					}
 				}
-				//posi√ß√µes das caixas, trabalhador e locais de armazenamento
+				//posiÁıes das caixas, trabalhador e locais de armazenamento do nÌvel 1
 				table1[xx1][yy1] = "X";
 				table1[bb1][BB1] = "B";
 				table1[bb2][BB2] = "B";
@@ -181,13 +184,17 @@ public static void main(String[] args)
 			{
 				k1--;
 			}
-			if (k1==bb1 && l1==BB1) {
-				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*")) { //Se a futura posi√ß√£o de B estiver ocupada por "*", o sistema n√£o evolui
-					System.out.println("Movimento n√£o permitido.");
+			
+			if (k1==bb1 && l1==BB1)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table1[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
+				{
 					k1=k;
 					l1=l;
 				}
-				else {
+				else
+				{
 					table1[bb1][BB1]=" ";
 					table1[bb1+(k1-k)][BB1+(l1-l)]="B";
 				
@@ -195,13 +202,16 @@ public static void main(String[] args)
 					BB1=BB1+(l1-l);
 				}
 			}
-			if (k1==bb2 && l1==BB2) {
-				if (table1[bb2+(k1-k)][BB2+(l1-l)].equals("*")) { //Se a futura posi√ß√£o de B estiver ocupada por "*", o sistema n√£o evolui
-					System.out.println("Movimento n√£o permitido.");
+			if (k1==bb2 && l1==BB2)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table1[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table1[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
+				{
 					k1=k;
 					l1=l;
 				}
-				else {
+				else
+				{
 					table1[bb2][BB2]=" ";
 					table1[bb2+(k1-k)][BB2+(l1-l)]="B";
 				
@@ -209,14 +219,16 @@ public static void main(String[] args)
 					BB2=BB2+(l1-l);
 				}
 			}
-			if (k1==bb3 && l1==BB3) {
-
-				if (table1[bb3+(k1-k)][BB3+(l1-l)].equals("*")) { //Se a futura posi√ß√£o de B estiver ocupada por "*", o sistema n√£o evolui
-					System.out.println("Movimento n√£o permitido.");
+			if (k1==bb3 && l1==BB3)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table1[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table1[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
+				{
 					k1=k;
 					l1=l;
 				}
-				else {
+				else
+				{
 					table1[bb3][BB3]=" ";
 					table1[bb3+(k1-k)][BB3+(l1-l)]="B";
 				
@@ -224,14 +236,16 @@ public static void main(String[] args)
 					BB3=BB3+(l1-l);
 				}
 			}
-			if (k1==bb4 && l1==BB4) {
-				if (table1[bb4+(k1-k)][BB4+(l1-l)].equals("*")) { //Se a futura posi√ß√£o de B estiver ocupada por "*", o sistema n√£o evolui
-					System.out.println("Movimento n√£o permitido.");
+			if (k1==bb4 && l1==BB4)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table1[bb4+(k1-k)][BB4+(l1-l)].equals("*") || table1[bb4+(k1-k)][BB4+(l1-l)].equals("B") )
+				{
 					k1=k;
 					l1=l;
-
 				}
-				else {
+				else
+				{
 					table1[bb4][BB4]=" ";
 					table1[bb4+(k1-k)][BB4+(l1-l)]="B";
 				
@@ -239,14 +253,9 @@ public static void main(String[] args)
 					BB4=BB4+(l1-l);
 				}
 			}
-			if (table1[k1][l1].equals("*")) { //Se a futura posi√ß√£o de M estiver ocupada por "*", o sistema n√£o evolui.
-				k1=k;
-				l1=l;
-				System.out.println("Movimento n√£o permitido.");
-			}
 
 			
-			table1[k1][l1]="M"; //nova posi√ß√£o do trabalhador M
+			table1[k1][l1]="M"; //nova posiÁ„o do trabalhador M
 			k=k1;
 			l=l1;
 			for (int i=0;i<table1.length;i++) 
@@ -258,14 +267,21 @@ public static void main(String[] args)
 				System.out.println();
 			}
 		}
-	}
+}
 	else if (level == 2)
 	{
-		int k=2;
-		int l=7;
-		for (int i=0;i<table2.length;i++) // i vai de 0 at√© 8
+		int k=2; int k1=k;  // k1 new line position
+		int l=7; int l1=l; // l1 new column position
+		
+		int xx1=3; int xx2=4; int xx3=5;  //turned B and X positions into variables, so that we can change them.
+		int yy1=22; int yy2=22; int yy3=22;
+		
+		int bb1=2; int bb2=3; int bb3=3; 
+		int BB1=6; int BB2=6; int BB3=7;
+		
+		for (int i=0;i<table2.length;i++) // i vai de 0 atÈ 8
 			{ 
-			for (int j=0;j<table2[0].length;j++)  //j vai de 0 at√© 24
+			for (int j=0;j<table2[0].length;j++)  //j vai de 0 atÈ 24
 			{
 				if (i==0)
 				{
@@ -367,42 +383,103 @@ public static void main(String[] args)
 					}
 				}
 			
-			//posi√ß√µes das caixas, trabalhador e locais de armazenamento
-			table2[3][22] = "X";
-			table2[2][6] = "B";
-			table2[3][6] = "B";
-			table2[5][22] = "X";
-			table2[6][22] = "X";
-			table2[3][7] = "B";
+			//posiÁıes das caixas, trabalhador e locais de armazenamento
+			table2[xx1][yy1] = "X";
+			table2[bb1][BB1] = "B";
+			table2[bb2][BB2] = "B";
+			table2[xx2][yy2] = "X";
+			table2[xx3][yy3] = "X";
+			table2[bb3][BB3] = "B";
 			table2[k][l] = "M";
 			
 			System.out.print(table2[i][j] + " ");
 		}
 		System.out.println();
 	}
-		while (table2[3][22].equals("X") && table2[5][22].equals("X")  && table2[6][22].equals("X")) 
+		while (!table2[xx1][yy1].equals("B") || !table2[xx2][yy2].equals("B")  || !table2[xx3][yy3].equals("B")) 
 		{
 			System.out.println("Prima W,A,S e D para se mover: ");
 			String tecla = scan.nextLine();
 			table2[k][l]=" ";
+			k1=k;
+			l1=l;
 
 			if (tecla.equals("a")) 
 			{
-				l--;	
+				l1--;
+				
 			}
 			if (tecla.equals("s")) 
 			{
-				k++;
+				k1++;
 			}
 			if (tecla.equals("d")) 
 			{
-				l++;
+				l1++;
 			}
 			if (tecla.equals("w"))
 			{
-				k--;
+				k1--;
 			}
-			table2[k][l]="M"; //nova posi√ß√£o do trabalhador M
+			
+			if (k1==bb1 && l1==BB1)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table2[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table2[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
+				{
+					k1=k;
+					l1=l;
+				}
+				else
+				{
+					table2[bb1][BB1]=" ";
+					table2[bb1+(k1-k)][BB1+(l1-l)]="B";
+				
+					bb1=bb1+(k1-k);
+					BB1=BB1+(l1-l);
+				}
+			}
+			if (k1==bb2 && l1==BB2)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table2[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table2[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
+				{
+					k1=k;
+					l1=l;
+				}
+				else
+				{
+					table2[bb2][BB2]=" ";
+					table2[bb2+(k1-k)][BB2+(l1-l)]="B";
+				
+					bb2=bb2+(k1-k);
+					BB2=BB2+(l1-l);
+				}
+			}
+			if (k1==bb3 && l1==BB3)
+			{
+				//Se a futura posiÁ„o de B estiver ocupada por "*"/"B", o sistema n„o evolui
+				if (table2[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table2[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
+				{
+					k1=k;
+					l1=l;
+				}
+				else
+				{
+					table2[bb3][BB3]=" ";
+					table2[bb3+(k1-k)][BB3+(l1-l)]="B";
+				
+					bb3=bb3+(k1-k);
+					BB3=BB3+(l1-l);
+				}
+			}
+			
+			
+			table2[k1][l1]="M"; //nova posiÁ„o do trabalhador M
+			k=k1;
+			l=l1;
+			
+			
 
 			for (int i=0;i<table2.length;i++) 
 			{
@@ -412,12 +489,13 @@ public static void main(String[] args)
 				}
 				System.out.println();
 			}
+			
 		}
 	}
 	
 	else 
 	{
-		System.out.println("Erro na escolha do n√≠vel!");
+		System.out.println("Erro na escolha do nÌvel!");
 	}
 		
 	scan.close();
