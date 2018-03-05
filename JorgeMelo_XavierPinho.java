@@ -8,7 +8,7 @@ public static void main(String[] args)
 {
 	//SOKOBAN
 				
-//cenário do nível 1
+//Display of level 1
 	System.out.println("NÍVEL 1");
 	System.out.println("      *******");
 	System.out.println("      *     *");
@@ -20,7 +20,7 @@ public static void main(String[] args)
 	System.out.println("        ********");
 
 
-//cenário do nível 2
+//Display of level 2
 	System.out.println("NÍVEL 2");
 	System.out.println("*************");
 	System.out.println("*           *");
@@ -34,29 +34,31 @@ public static void main(String[] args)
 	System.out.println("   *************");
 	
 	Scanner scan = new Scanner(System.in);
-	System.out.println("Escolher nível: ");
+	System.out.println("Choose a level!");
 	int level = scan.nextInt();
 	scan.nextLine();
 	
 	String[][] table1 = new String[8][22]; //matrix of level 1
 	String[][] table2 = new String[9][25]; //matrix of level 2
 	
+	int score = 0;
+	
 	if (level==1)
 	{
-		int k=4; int k1=k;  // k1 new line position
-		int l=12; int l1=l; // l1 new column position
+		int k=4; //original y-position of M
+		int l=12; //original x-position of M
+		int k1=k;  // k1 new line position
+		int l1=l; // l1 new column position
 		
-		int xx1=1; int xx2=3; int xx3=4; int xx4=6; //turned B and X positions into variables, so that we can change them.
+		int xx1=1; int xx2=3; int xx3=4; int xx4=6; //turned B and X positions into variables, so that we can change them
 		int yy1=9; int yy2=18; int yy3=3; int yy4=12;
 		
 		int bb1=3; int bb2=3; int bb3=4; int bb4=5;
 		int BB1=9; int BB2=15; int BB3=9; int BB4=12;
-		
-		int score;
-		
-		for (int i=0;i<table1.length;i++) // i vai de 0 até 7
+			
+		for (int i=0;i<table1.length;i++) //i goes from 0 to 7
 			{ 
-			for (int j=0;j<table1[0].length;j++)  //j vai de 0 até 21
+			for (int j=0;j<table1[0].length;j++)  //j goes from 0 to 21
 			{
 				if (i==0)
 				{
@@ -146,7 +148,7 @@ public static void main(String[] args)
 						table1[i][j]=" ";
 					}
 				}
-				//posições das caixas, trabalhador e locais de armazenamento do nível 1
+				// positions of boxes B, worker M and storage locations X of level 1
 				table1[xx1][yy1] = "X";
 				table1[bb1][BB1] = "B";
 				table1[bb2][BB2] = "B";
@@ -161,11 +163,11 @@ public static void main(String[] args)
 			}
 			System.out.println();
 		}
-		//enquanto as posições X não tiverem todas uma caixa B o jogo não acaba
+		//while the boxes B are not in the storage location X, the level is not finished
 		while (!table1[xx1][yy1].equals("B") || !table1[xx2][yy2].equals("B") || !table1[xx3][yy3].equals("B") || !table1[xx4][yy4].equals("B")) 
 		{
 			score = 0;
-			System.out.println("Prima W,A,S e D para se mover: ");
+			System.out.println("Use W,A,S e D to move: ");
 			String tecla = scan.nextLine();
 			table1[k][l]=" ";
 			k1=k;
@@ -198,7 +200,7 @@ public static void main(String[] args)
 			
 			if (k1==bb1 && l1==BB1)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table1[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
 				{
 					k1=k;
@@ -215,7 +217,7 @@ public static void main(String[] args)
 			}
 			if (k1==bb2 && l1==BB2)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table1[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table1[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
 				{
 					k1=k;
@@ -232,7 +234,7 @@ public static void main(String[] args)
 			}
 			if (k1==bb3 && l1==BB3)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table1[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table1[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
 				{
 					k1=k;
@@ -249,7 +251,7 @@ public static void main(String[] args)
 			}
 			if (k1==bb4 && l1==BB4)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table1[bb4+(k1-k)][BB4+(l1-l)].equals("*") || table1[bb4+(k1-k)][BB4+(l1-l)].equals("B") )
 				{
 					k1=k;
@@ -266,9 +268,15 @@ public static void main(String[] args)
 			}
 
 			
-			table1[k1][l1]="M"; //nova posição do trabalhador M
+			table1[k1][l1]="M"; //Worker M new position
 			k=k1;
 			l=l1;
+			
+			/*if (table1[xx1][yy1].equals("B") && table1[xx2][yy2].equals("B")  && table1[xx3][yy3].equals("B"))
+			{
+				score = 1;
+			}*/
+			
 			for (int i=0;i<table1.length;i++) 
 			{
 				for (int j=0;j<table1[0].length;j++) 
@@ -277,23 +285,31 @@ public static void main(String[] args)
 				}
 				System.out.println();
 			}
-		}
-		
-	}
+			
+		}		
+
+		//level = 2;
+	}			
+	
+
+	/*if (score == 1)
+	{
+		level = 2;
+	}*/
 	else if (level == 2)
 	{
 		int k=2; int k1=k;  // k1 new line position
 		int l=7; int l1=l; // l1 new column position
 		
-		int xx1=3; int xx2=4; int xx3=5;  //turned B and X positions into variables, so that we can change them.
+		int xx1=3; int xx2=4; int xx3=5;  //turned B and X positions into variables, so that we can change them
 		int yy1=22; int yy2=22; int yy3=22;
 		
 		int bb1=2; int bb2=3; int bb3=3; 
 		int BB1=6; int BB2=6; int BB3=7;
 				
-		for (int i=0;i<table2.length;i++) // i vai de 0 até 8
+		for (int i=0;i<table2.length;i++) // i goes from 0 to 8
 			{ 
-			for (int j=0;j<table2[0].length;j++)  //j vai de 0 até 24
+			for (int j=0;j<table2[0].length;j++)  //j goes from 0 to 24
 			{
 				if (i==0)
 				{
@@ -395,7 +411,7 @@ public static void main(String[] args)
 					}
 				}
 			
-			//posições das caixas, trabalhador e locais de armazenamento
+			// positions of boxes B, worker M and storage locations X of level 2
 			table2[xx1][yy1] = "X";
 			table2[bb1][BB1] = "B";
 			table2[bb2][BB2] = "B";
@@ -408,10 +424,10 @@ public static void main(String[] args)
 		}
 		System.out.println();
 	}
-		//enquanto as posições X não tiverem todas uma caixa B o jogo não acaba
+		//while the boxes B are not in the storage location X, the level is not finished
 		while (!table2[xx1][yy1].equals("B") || !table2[xx2][yy2].equals("B")  || !table2[xx3][yy3].equals("B")) 
 		{
-			System.out.println("Prima W,A,S e D para se mover: ");
+			System.out.println("Use W,A,S e D to move: ");
 			String tecla = scan.nextLine();
 			table2[k][l]=" ";
 			k1=k;
@@ -446,7 +462,7 @@ public static void main(String[] args)
 			
 			if (k1==bb1 && l1==BB1)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table2[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table2[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
 				{
 					k1=k;
@@ -463,7 +479,7 @@ public static void main(String[] args)
 			}
 			if (k1==bb2 && l1==BB2)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table2[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table2[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
 				{
 					k1=k;
@@ -480,7 +496,7 @@ public static void main(String[] args)
 			}
 			if (k1==bb3 && l1==BB3)
 			{
-				//Se a futura posição de B estiver ocupada por "*"/"B", o sistema não evolui
+				//If the future position of B is occupied by "*" or "B" the system don't evolves
 				if (table2[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table2[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
 				{
 					k1=k;
@@ -497,7 +513,8 @@ public static void main(String[] args)
 			}
 			
 			
-			table2[k1][l1]="M"; //nova posição do trabalhador M
+			
+			table2[k1][l1]="M"; //Worker M new position
 			k=k1;
 			l=l1;
 			
@@ -516,6 +533,8 @@ public static void main(String[] args)
 		
 	}
 	
+	
+	
 	else 
 	{
 		System.out.println("Erro na escolha do nível!");
@@ -523,4 +542,5 @@ public static void main(String[] args)
 		
 	scan.close();
 }
+
 }
