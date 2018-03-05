@@ -149,7 +149,7 @@ public static void main(String[] args)
 					}
 				}
 				// positions of boxes B, worker M and storage locations X of level 1
-				table1[xx1][yy1] = "X";
+				table1[xx1][yy1] = "X"; 
 				table1[bb1][BB1] = "B";
 				table1[bb2][BB2] = "B";
 				table1[xx2][yy2] = "X";
@@ -191,16 +191,27 @@ public static void main(String[] args)
 			}
 			if (tecla.equals("q"))
 			{
-				return;
+				System.out.println("Are you sure you want to quit the game?");
+				System.out.println("Y - to leave the game.");
+				if (tecla.equals("y"))
+				{
+					
+				}
+
+
 			}
 			if (tecla.equals("x"))
 			{
 				System.exit(0);
 			}
-			
+			if (table1[k1][l1].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
+			{
+				k1=k;
+				l1=l;
+			}
 			if (k1==bb1 && l1==BB1)
 			{
-				//If the future position of B is occupied by "*" or "B" the system don't evolves
+				//If the future position of B is occupied by "*" or "B" the system doesn't evolves
 				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table1[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
 				{
 					k1=k;
@@ -272,11 +283,6 @@ public static void main(String[] args)
 			k=k1;
 			l=l1;
 			
-			/*if (table1[xx1][yy1].equals("B") && table1[xx2][yy2].equals("B")  && table1[xx3][yy3].equals("B"))
-			{
-				score = 1;
-			}*/
-			
 			for (int i=0;i<table1.length;i++) 
 			{
 				for (int j=0;j<table1[0].length;j++) 
@@ -288,14 +294,7 @@ public static void main(String[] args)
 			
 		}		
 
-		//level = 2;
 	}			
-	
-
-	/*if (score == 1)
-	{
-		level = 2;
-	}*/
 	else if (level == 2)
 	{
 		int k=2; int k1=k;  // k1 new line position
@@ -459,7 +458,11 @@ public static void main(String[] args)
 				System.exit(0);
 
 			}
-			
+			if (table2[k1][l1].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
+			{
+				k1=k;
+				l1=l;
+			}
 			if (k1==bb1 && l1==BB1)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
@@ -532,12 +535,9 @@ public static void main(String[] args)
 		}
 		
 	}
-	
-	
-	
 	else 
 	{
-		System.out.println("Erro na escolha do nível!");
+		System.out.println("Error choosing level!");
 	}
 		
 	scan.close();
