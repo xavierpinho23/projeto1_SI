@@ -1,15 +1,18 @@
 package firstproject;
 
+import java.awt.Color;
 import java.util.Scanner;
 
 public class JorgeMelo_XavierPinho
 {
 public static void main(String[] args)
-{
+{	
 	//SOKOBAN
 				
+	System.out.println("WELCOME TO SOKOBAN!");
+
 //Display of level 1
-	System.out.println("NÍVEL 1");
+	System.out.println("LEVEL 1");
 	System.out.println("      *******");
 	System.out.println("      *     *");
 	System.out.println("      *     **********");
@@ -19,9 +22,8 @@ public static void main(String[] args)
 	System.out.println("        *      *");
 	System.out.println("        ********");
 
-
 //Display of level 2
-	System.out.println("NÍVEL 2");
+	System.out.println("LEVEL 2");
 	System.out.println("*************");
 	System.out.println("*           *");
 	System.out.println("*           *");
@@ -38,24 +40,29 @@ public static void main(String[] args)
 	int level = scan.nextInt();
 	scan.nextLine();
 	
-	String[][] table1 = new String[8][22]; //matrix of level 1
-	String[][] table2 = new String[9][25]; //matrix of level 2
-	
-	int score = 0;
-	
+	String[][] table1 = new String[8][22];  //matrix of level 1
+	String[][] table2 = new String[9][25];  //matrix of level 2
+		
 	if (level==1)
 	{
-		int k=4; //original y-position of M
-		int l=12; //original x-position of M
-		int k1=k;  // k1 new line position
-		int l1=l; // l1 new column position
+		int yM = 4;    //original row of M
+		int xM = 12;   //original column of M
+		int y1M = yM;  //new row of M
+		int x1M = xM;  //new column of M
 		
-		int xx1=1; int xx2=3; int xx3=4; int xx4=6; //turned B and X positions into variables, so that we can change them
-		int yy1=9; int yy2=18; int yy3=3; int yy4=12;
+		int yX1=1; int yX2=3; int yX3=4; int yX4=6; //turned B and X positions into variables, so we can change them
+		int xX1=9; int xX2=18; int xX3=3; int xX4=12;
 		
-		int bb1=3; int bb2=3; int bb3=4; int bb4=5;
-		int BB1=9; int BB2=15; int BB3=9; int BB4=12;
-			
+		int yB1=3; int yB2=3; int yB3=4; int yB4=5;
+		int xB1=9; int xB2=15; int xB3=9; int xB4=12;
+		
+		for (int i=0;i<table1.length;i++) //i goes from 0 to 7
+		{ 
+		for (int j=0;j<table1[0].length;j++)  //j goes from 0 to 21
+		{
+			table1[i][j] = " ";
+		}
+		}
 		for (int i=0;i<table1.length;i++) //i goes from 0 to 7
 			{ 
 			for (int j=0;j<table1[0].length;j++)  //j goes from 0 to 21
@@ -66,20 +73,12 @@ public static void main(String[] args)
 					{
 						table1[i][j]="*";
 					}
-					else
-					{
-						table1[i][j]=" ";
-					}
 				}
 				else if (i==1) 
 				{
 					if (j==6 || j==12) 
 					{
 						table1[i][j]="*";
-					}
-					else 
-					{
-						table1[i][j]=" ";
 					}
 				}
 				else if (i==2)
@@ -88,20 +87,12 @@ public static void main(String[] args)
 					{
 						table1[i][j]="*";
 					}
-					else 
-					{
-						table1[i][j]=" ";
-					}
 				}
 				else if (i==3) 
 				{
 					if (j<7 || j==21) 
 					{
 						table1[i][j]="*";
-					}
-					else 
-					{
-						table1[i][j]=" ";
 					}
 				}
 				else if (i==4) 
@@ -110,20 +101,12 @@ public static void main(String[] args)
 					{
 						table1[i][j]="*";
 					}
-					else 
-					{
-						table1[i][j]=" ";
-					}
 				}
 				else if (i==5)
 				{
 					if (j<10 || j==15) 
 					{
 						table1[i][j]="*";
-					}
-					else 
-					{
-						table1[i][j]=" ";
 					}
 				}
 				else if (i==6) 
@@ -132,10 +115,6 @@ public static void main(String[] args)
 					{
 						table1[i][j]="*";
 					}
-					else
-					{
-						table1[i][j]=" ";
-					}
 				}
 				else if (i==7) 
 				{
@@ -143,182 +122,201 @@ public static void main(String[] args)
 					{
 						table1[i][j]="*";
 					}
-					else
-					{
-						table1[i][j]=" ";
-					}
 				}
 				// positions of boxes B, worker M and storage locations X of level 1
-				table1[xx1][yy1] = "X"; 
-				table1[bb1][BB1] = "B";
-				table1[bb2][BB2] = "B";
-				table1[xx2][yy2] = "X";
-				table1[xx3][yy3] = "X";
-				table1[bb3][BB3] = "B";
-				table1[k][l] = "M";
-				table1[bb4][BB4] = "B";
-				table1[xx4][yy4] = "X";
+				table1[yX1][xX1] = "X"; 
+				table1[yB1][xB1] = "B";
+				table1[yB2][xB2] = "B";
+				table1[yX2][xX2] = "X";
+				table1[yX3][xX3] = "X";
+				table1[yB3][xB3] = "B";
+				table1[yM][xM] = "M";
+				table1[yB4][xB4] = "B";
+				table1[yX4][xX4] = "X";
 				
 				System.out.print(table1[i][j] + " ");
 			}
 			System.out.println();
 		}
 		//while the boxes B are not in the storage location X, the level is not finished
-		while (!table1[xx1][yy1].equals("B") || !table1[xx2][yy2].equals("B") || !table1[xx3][yy3].equals("B") || !table1[xx4][yy4].equals("B")) 
+		while (!table1[yX1][xX1].equals("B") || !table1[yX2][xX2].equals("B") || !table1[yX3][xX3].equals("B") || !table1[yX4][xX4].equals("B")) 
 		{
-			score = 0;
 			System.out.println("Use W,A,S e D to move: ");
 			String tecla = scan.nextLine();
-			table1[k][l]=" ";
-			k1=k;
-			l1=l;
+			table1[yM][xM]=" ";
+			y1M=yM;
+			x1M=xM;
 
 			if (tecla.equals("a"))
 			{
-				l1--;	
+				x1M--;	
 			}
-			if (tecla.equals("s")) 
+			else if (tecla.equals("s")) 
 			{
-				k1++;
+				y1M++;
 			}
-			if (tecla.equals("d")) 
+			else if (tecla.equals("d")) 
 			{
-				l1++;
+				x1M++;
 			}
-			if (tecla.equals("w"))
+			else if (tecla.equals("w"))
 			{
-				k1--;
+				y1M--;
 			}
-			if (tecla.equals("q"))
+			else if (tecla.equals("q"))
 			{
-				System.out.println("Are you sure you want to quit the game?");
-				System.out.println("Y - to leave the game.");
-				if (tecla.equals("y"))
-				{
-					
-				}
-
-
+				
 			}
-			if (tecla.equals("x"))
+			else if (tecla.equals("x"))
 			{
 				System.exit(0);
 			}
-			if (table1[k1][l1].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
+			if (table1[y1M][x1M].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
 			{
-				k1=k;
-				l1=l;
+				y1M=yM;
+				x1M=xM;
 			}
-			if (k1==bb1 && l1==BB1)
+			if (y1M==yB1 && x1M==xB1)
 			{
 				//If the future position of B is occupied by "*" or "B" the system doesn't evolves
-				if (table1[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table1[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
+				if (table1[yB1+(y1M-yM)][xB1+(x1M-xM)].equals("*") || table1[yB1+(y1M-yM)][xB1+(x1M-xM)].equals("B") ) 
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table1[bb1][BB1]=" ";
-					table1[bb1+(k1-k)][BB1+(l1-l)]="B";
+					table1[yB1][xB1]=" ";
+					table1[yB1+(y1M-yM)][xB1+(x1M-xM)]="B";
 				
-					bb1=bb1+(k1-k);
-					BB1=BB1+(l1-l);
+					yB1=yB1+(y1M-yM);
+					xB1=xB1+(x1M-xM);
 				}
 			}
-			if (k1==bb2 && l1==BB2)
+			else if (y1M==yB2 && x1M==xB2)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table1[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table1[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
+				if (table1[yB2+(y1M-yM)][xB2+(x1M-xM)].equals("*") || table1[yB2+(y1M-yM)][xB2+(x1M-xM)].equals("B") )
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table1[bb2][BB2]=" ";
-					table1[bb2+(k1-k)][BB2+(l1-l)]="B";
+					table1[yB2][xB2]=" ";
+					table1[yB2+(y1M-yM)][xB2+(x1M-xM)]="B";
 				
-					bb2=bb2+(k1-k);
-					BB2=BB2+(l1-l);
+					yB2=yB2+(y1M-yM);
+					xB2=xB2+(x1M-xM);
 				}
 			}
-			if (k1==bb3 && l1==BB3)
+			else if (y1M==yB3 && x1M==xB3)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table1[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table1[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
+				if (table1[yB3+(y1M-yM)][xB3+(x1M-xM)].equals("*") || table1[yB3+(y1M-yM)][xB3+(x1M-xM)].equals("B") )
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table1[bb3][BB3]=" ";
-					table1[bb3+(k1-k)][BB3+(l1-l)]="B";
+					table1[yB3][xB3]=" ";
+					table1[yB3+(y1M-yM)][xB3+(x1M-xM)]="B";
 				
-					bb3=bb3+(k1-k);
-					BB3=BB3+(l1-l);
+					yB3=yB3+(y1M-yM);
+					xB3=xB3+(x1M-xM);
 				}
 			}
-			if (k1==bb4 && l1==BB4)
+			else if (y1M==yB4 && x1M==xB4)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table1[bb4+(k1-k)][BB4+(l1-l)].equals("*") || table1[bb4+(k1-k)][BB4+(l1-l)].equals("B") )
+				if (table1[yB4+(y1M-yM)][xB4+(x1M-xM)].equals("*") || table1[yB4+(y1M-yM)][xB4+(x1M-xM)].equals("B") )
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table1[bb4][BB4]=" ";
-					table1[bb4+(k1-k)][BB4+(l1-l)]="B";
+					table1[yB4][xB4]=" ";
+					table1[yB4+(y1M-yM)][xB4+(x1M-xM)]="B";
 				
-					bb4=bb4+(k1-k);
-					BB4=BB4+(l1-l);
+					yB4=yB4+(y1M-yM);
+					xB4=xB4+(x1M-xM);
 				}
 			}
-
 			
-			table1[k1][l1]="M"; //Worker M new position
-			k=k1;
-			l=l1;
+			if (!(y1M==yX1 && x1M==xX1) && !(xB1==yX1 && yB1==xX1) && !(xB2==yX1 && yB2==xX1) && !(xB3==yX1 && yB3==xX1) && !(xB4==yX1 && yB4==xX1)) 
+				//if nothing is in X1 position X will appear
+			{
+				table1[yX1][xX1]="X";
+			}
+			if (!(y1M==yX2 && x1M==xX2) && !(xB1==yX2 && yB1==xX2) && !(xB2==yX2 && yB2==xX2) && !(xB3==yX2 && yB3==xX2) && !(xB4==yX2 && yB4==xX2)) 
+				//if nothing is in X2 position X will appear
+			{
+				table1[yX2][xX2]="X";
+			}
+			if (!(y1M==yX3 && x1M==xX3) && !(xB1==yX3 && yB1==xX3) && !(xB2==yX3 && yB2==xX3) && !(xB3==yX3 && yB3==xX3) && !(xB4==yX3 && yB4==xX3))  
+				//if nothing is in X3 position X will appear
+			{
+				table1[yX3][xX3]="X";
+			}
+			if (!(y1M==yX4 && x1M==xX4) && !(xB1==yX4 && yB1==xX4) && !(xB2==yX4 && yB2==xX4) && !(xB3==yX4 && yB3==xX4) && !(xB4==yX4 && yB4==xX4))  
+				//if nothing is in X4 position X will appear
+			{
+				table1[yX4][xX4]="X";
+			}
+			
+			//This guarantee that M and B will appear if they are in X positions
+
+			table1[yB1][xB1] = "B";
+			table1[yB2][xB2] = "B";
+			table1[yB3][xB3] = "B";
+			table1[y1M][x1M] = "M";
+			table1[yB4][xB4] = "B";
+			
+			yM=y1M;
+			xM=x1M;
 			
 			for (int i=0;i<table1.length;i++) 
 			{
 				for (int j=0;j<table1[0].length;j++) 
 				{
-					System.out.print(table1[i][j] + " ");
+					System.out.print(table1[i][j]+ " ");
 				}
 				System.out.println();
 			}
-			
-		}		
-
+		}
 	}			
 	else if (level == 2)
-	{
-		int k=2; int k1=k;  // k1 new line position
-		int l=7; int l1=l; // l1 new column position
+	{		
+		int yM=2;  // original row of M
+		int xM=7;  // original column of M
+		int y1M=yM; // new row of M
+		int x1M=xM; // new column of M
 		
-		int xx1=3; int xx2=4; int xx3=5;  //turned B and X positions into variables, so that we can change them
-		int yy1=22; int yy2=22; int yy3=22;
+		int yX1=3; int yX2=4; int yX3=5;  //turned B and X positions into variables, so we can change them
+		int xX1=22; int xX2=22; int xX3=22;
 		
-		int bb1=2; int bb2=3; int bb3=3; 
-		int BB1=6; int BB2=6; int BB3=7;
+		int yB1=2; int yB2=3; int yB3=3; 
+		int xB1=6; int xB2=6; int xB3=7;
+		
+		for (int i=0;i<table2.length;i++) //i goes from 0 to 7
+		{ 
+		for (int j=0;j<table2[0].length;j++)  //j goes from 0 to 21
+		{
+			table2[i][j] = " "; //fill the matrix with empty spaces
+		}
+		}
 				
 		for (int i=0;i<table2.length;i++) // i goes from 0 to 8
 			{ 
 			for (int j=0;j<table2[0].length;j++)  //j goes from 0 to 24
-			{
+			{			
 				if (i==0)
 				{
 					if (j<13) 
 					{
 						table2[i][j]="*";
-					}
-					else
-					{
-						table2[i][j]= " ";
 					}
 				}
 				else if (i==1) 
@@ -327,20 +325,12 @@ public static void main(String[] args)
 					{
 						table2[i][j]="*";
 					}
-					else 
-					{
-						table2[i][j]=" ";
-					}
 				}
 				else if (i==2)
 				{
 					if (j==0 || j==12 || j>17) 
 					{
 						table2[i][j]="*";
-					}
-					else 
-					{
-						table2[i][j]=" ";
 					}
 				}
 				else if (i==3) 
@@ -349,20 +339,12 @@ public static void main(String[] args)
 					{
 						table2[i][j]="*";
 					}
-					else 
-					{
-						table2[i][j]=" ";
-					}
 				}
 				else if (i==4) 
 				{
 					if (j<7 || j>11 && j<19 || j==24) 
 					{
 						table2[i][j]="*";
-					}
-					else 
-					{
-						table2[i][j]=" ";
 					}
 				}
 				else if (i==5)
@@ -371,20 +353,12 @@ public static void main(String[] args)
 					{
 						table2[i][j]="*";
 					}
-					else 
-					{
-						table2[i][j]=" ";
-					}
 				}
 				else if (i==6) 
 				{
 					if (j==3 || (j>14 && j<19) || j==24)
 					{
 						table2[i][j]="*";
-					}
-					else
-					{
-						table2[i][j]=" ";
 					}
 				}
 				else if (i==7) 
@@ -393,10 +367,6 @@ public static void main(String[] args)
 					{
 						table2[i][j]="*";
 					}
-					else
-					{
-						table2[i][j]=" ";
-					}
 				}
 				else if (i==8)
 				{
@@ -404,50 +374,46 @@ public static void main(String[] args)
 					{
 						table2[i][j] = "*";
 					}
-					else
-					{
-						table2[i][j] = " ";
-					}
 				}
 			
 			// positions of boxes B, worker M and storage locations X of level 2
-			table2[xx1][yy1] = "X";
-			table2[bb1][BB1] = "B";
-			table2[bb2][BB2] = "B";
-			table2[xx2][yy2] = "X";
-			table2[xx3][yy3] = "X";
-			table2[bb3][BB3] = "B";
-			table2[k][l] = "M";
+			table2[yX1][xX1] = "X";
+			table2[yB1][xB1] = "B";
+			table2[yB2][xB2] = "B";
+			table2[yX2][xX2] = "X";
+			table2[yX3][xX3] = "X";
+			table2[yB3][xB3] = "B";
+			table2[yM][xM] = "M";
 			
 			System.out.print(table2[i][j] + " ");
 		}
 		System.out.println();
 	}
 		//while the boxes B are not in the storage location X, the level is not finished
-		while (!table2[xx1][yy1].equals("B") || !table2[xx2][yy2].equals("B")  || !table2[xx3][yy3].equals("B")) 
+		while (!table2[yX1][xX1].equals("B") || !table2[yX2][xX2].equals("B")  || !table2[yX3][xX3].equals("B")) 
 		{
 			System.out.println("Use W,A,S e D to move: ");
 			String tecla = scan.nextLine();
-			table2[k][l]=" ";
-			k1=k;
-			l1=l;
+			table2[yM][xM]=" ";
+			y1M=yM;
+			x1M=xM;
 
 			if (tecla.equals("a")) 
 			{
-				l1--;
+				x1M--;
 				
 			}
 			if (tecla.equals("s")) 
 			{
-				k1++;
+				y1M++;
 			}
 			if (tecla.equals("d")) 
 			{
-				l1++;
+				x1M++;
 			}
 			if (tecla.equals("w"))
 			{
-				k1--;
+				y1M--;
 			}
 			if (tecla.equals("q"))
 			{
@@ -458,70 +424,84 @@ public static void main(String[] args)
 				System.exit(0);
 
 			}
-			if (table2[k1][l1].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
+			if (table2[y1M][x1M].equals("*")) //If the future position of worker M is occupied by "*" the system doesn't evolves
 			{
-				k1=k;
-				l1=l;
+				y1M=yM;
+				x1M=xM;
 			}
-			if (k1==bb1 && l1==BB1)
+			if (y1M==yB1 && x1M==xB1)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table2[bb1+(k1-k)][BB1+(l1-l)].equals("*") || table2[bb1+(k1-k)][BB1+(l1-l)].equals("B") ) 
+				if (table2[yB1+(y1M-yM)][xB1+(x1M-xM)].equals("*") || table2[yB1+(y1M-yM)][xB1+(x1M-xM)].equals("B") ) 
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table2[bb1][BB1]=" ";
-					table2[bb1+(k1-k)][BB1+(l1-l)]="B";
+					table2[yB1][xB1]=" ";
+					table2[yB1+(y1M-yM)][xB1+(x1M-xM)]="B";
 				
-					bb1=bb1+(k1-k);
-					BB1=BB1+(l1-l);
+					yB1=yB1+(y1M-yM);
+					xB1=xB1+(x1M-xM);
 				}
 			}
-			if (k1==bb2 && l1==BB2)
+			if (y1M==yB2 && x1M==xB2)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table2[bb2+(k1-k)][BB2+(l1-l)].equals("*") || table2[bb2+(k1-k)][BB2+(l1-l)].equals("B") )
+				if (table2[yB2+(y1M-yM)][xB2+(x1M-xM)].equals("*") || table2[yB2+(y1M-yM)][xB2+(x1M-xM)].equals("B") )
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table2[bb2][BB2]=" ";
-					table2[bb2+(k1-k)][BB2+(l1-l)]="B";
+					table2[yB2][xB2]=" ";
+					table2[yB2+(y1M-yM)][xB2+(x1M-xM)]="B";
 				
-					bb2=bb2+(k1-k);
-					BB2=BB2+(l1-l);
+					yB2=yB2+(y1M-yM);
+					xB2=xB2+(x1M-xM);
 				}
 			}
-			if (k1==bb3 && l1==BB3)
+			if (y1M==yB3 && x1M==xB3)
 			{
 				//If the future position of B is occupied by "*" or "B" the system don't evolves
-				if (table2[bb3+(k1-k)][BB3+(l1-l)].equals("*") || table2[bb3+(k1-k)][BB3+(l1-l)].equals("B") )
+				if (table2[yB3+(y1M-yM)][xB3+(x1M-xM)].equals("*") || table2[yB3+(y1M-yM)][xB3+(x1M-xM)].equals("B") )
 				{
-					k1=k;
-					l1=l;
+					y1M=yM;
+					x1M=xM;
 				}
 				else
 				{
-					table2[bb3][BB3]=" ";
-					table2[bb3+(k1-k)][BB3+(l1-l)]="B";
+					table2[yB3][xB3]=" ";
+					table2[yB3+(y1M-yM)][xB3+(x1M-xM)]="B";
 				
-					bb3=bb3+(k1-k);
-					BB3=BB3+(l1-l);
+					yB3=yB3+(y1M-yM);
+					xB3=xB3+(x1M-xM);
 				}
 			}
+			if (!(y1M==yX1 && x1M==xX1) && !(yB1==yX1 && xB1==xX1) && !(yB2==yX1 && xB2==xX1) && !(yB3==yX1 && xB3==xX1)) 
+				//if nothing is in X1 position X will appear
+			{
+				table2[yX1][xX1]="X";
+			}
+			if (!(y1M==yX2 && x1M==xX2) && !(yB1==yX2 && xB1==xX2) && !(yB2==yX2 && xB2==xX2) && !(yB3==yX2 && xB3==xX2)) 
+				//if nothing is in X2 position X will appear
+			{
+				table2[yX2][xX2]="X";
+			}
+			if (!(y1M==yX3 && x1M==xX3) && !(yB1==yX3 && xB1==xX3) && !(yB2==yX3 && xB2==xX3) && !(yB3==yX3 && xB3==xX3))  
+				//if nothing is in X3 position X will appear
+			{
+				table2[yX3][xX3]="X";
+			}
 			
-			
-			
-			table2[k1][l1]="M"; //Worker M new position
-			k=k1;
-			l=l1;
-			
-			
+			table2[y1M][x1M] = "M"; //This guarantee that M and B will appear if they are in X positions
+			table2[yB1][xB1] = "B";
+			table2[yB2][xB2] = "B";
+			table2[yB3][xB3] = "B";
+			yM=y1M;
+			xM=x1M;	
 
 			for (int i=0;i<table2.length;i++) 
 			{
@@ -531,16 +511,12 @@ public static void main(String[] args)
 				}
 				System.out.println();
 			}
-			
 		}
-		
 	}
 	else 
 	{
 		System.out.println("Error choosing level!");
 	}
-		
 	scan.close();
 }
-
 }
