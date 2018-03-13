@@ -1,6 +1,5 @@
 package firstproject;
 
-import java.awt.Color;
 import java.util.Scanner;
 
 public class JorgeMelo_XavierPinho
@@ -286,8 +285,14 @@ public static void main(String[] args)
 				System.out.println();
 			}
 		}
+		//this guarantee that if level 1 is completed it goes to level 2
+		level = 2;
+		System.out.println("Congratulations! You're now going to level 2, Good Luck!");
+
+		
 	}			
-	else if (level == 2)
+	//if instead of else if allows to go level 1 -> level 2
+	if (level == 2)
 	{		
 		int yM=2;  // original row of M
 		int xM=7;  // original column of M
@@ -512,6 +517,8 @@ public static void main(String[] args)
 				System.out.println();
 			}
 		}
+		System.out.println("Congratulations! You have completed the game!");
+
 	}
 	else 
 	{
